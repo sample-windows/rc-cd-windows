@@ -24,3 +24,29 @@ jobs:
               imageTag: "master"
           script:
             - Write-Output "Hello world"
+
+# On node pools
+
+  - name: windows-node-pool-1-job
+    type: runSh
+    allowPublicAccess: true
+    runtime:
+      nodePool: windows-node-pool-1
+      container: false
+    steps:
+      - TASK:
+          name: say-hello-world
+          script:
+            - Write-Output "Hello world"
+            
+  - name: windows-node-pool-2-job
+    type: runSh
+    allowPublicAccess: true
+    runtime:
+      nodePool: windows-node-pool-2
+      container: false
+    steps:
+      - TASK:
+          name: say-hello-world
+          script:
+            - Write-Output "Hello world"
