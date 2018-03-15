@@ -1,0 +1,26 @@
+jobs:
+  - name: windows-host-runSh-on-default-node
+    type: runSh
+    allowPublicAccess: true
+    runtime:
+      container: false
+    steps:
+      - TASK:
+          name: say-hello-world
+          script:
+            - Write-Output "Hello world"
+
+  - name: windows-container-runSh-on-default-node
+    type: runSh
+    allowPublicAccess: true
+    runtime:
+      container: true
+    steps:
+      - TASK:
+          name: say-hello-world
+          runtime:
+            options:
+              imageName: "drydock/w16"
+              imageTag: "master"
+          script:
+            - Write-Output "Hello world"
